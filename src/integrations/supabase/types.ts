@@ -14,7 +14,192 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alerts: {
+        Row: {
+          action: string | null
+          cause: string | null
+          confidence: number | null
+          created_at: string
+          device_id: string
+          id: string
+          level: string
+          message: string
+          read: boolean | null
+        }
+        Insert: {
+          action?: string | null
+          cause?: string | null
+          confidence?: number | null
+          created_at?: string
+          device_id: string
+          id?: string
+          level: string
+          message: string
+          read?: boolean | null
+        }
+        Update: {
+          action?: string | null
+          cause?: string | null
+          confidence?: number | null
+          created_at?: string
+          device_id?: string
+          id?: string
+          level?: string
+          message?: string
+          read?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "alerts_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: false
+            referencedRelation: "devices"
+            referencedColumns: ["device_id"]
+          },
+        ]
+      }
+      device_config: {
+        Row: {
+          device_id: string
+          gas_critical: number | null
+          gas_high: number | null
+          gas_low: number | null
+          gas_medium: number | null
+          id: string
+          temp_critical: number | null
+          temp_high: number | null
+          temp_low: number | null
+          temp_medium: number | null
+          updated_at: string
+          vib_high: number | null
+          vib_low: number | null
+          vib_medium: number | null
+          window_size: number | null
+          z_threshold: number | null
+        }
+        Insert: {
+          device_id: string
+          gas_critical?: number | null
+          gas_high?: number | null
+          gas_low?: number | null
+          gas_medium?: number | null
+          id?: string
+          temp_critical?: number | null
+          temp_high?: number | null
+          temp_low?: number | null
+          temp_medium?: number | null
+          updated_at?: string
+          vib_high?: number | null
+          vib_low?: number | null
+          vib_medium?: number | null
+          window_size?: number | null
+          z_threshold?: number | null
+        }
+        Update: {
+          device_id?: string
+          gas_critical?: number | null
+          gas_high?: number | null
+          gas_low?: number | null
+          gas_medium?: number | null
+          id?: string
+          temp_critical?: number | null
+          temp_high?: number | null
+          temp_low?: number | null
+          temp_medium?: number | null
+          updated_at?: string
+          vib_high?: number | null
+          vib_low?: number | null
+          vib_medium?: number | null
+          window_size?: number | null
+          z_threshold?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "device_config_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: true
+            referencedRelation: "devices"
+            referencedColumns: ["device_id"]
+          },
+        ]
+      }
+      devices: {
+        Row: {
+          created_at: string
+          device_id: string
+          id: string
+          location: string | null
+          name: string
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          device_id: string
+          id?: string
+          location?: string | null
+          name: string
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          device_id?: string
+          id?: string
+          location?: string | null
+          name?: string
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      sensor_readings: {
+        Row: {
+          chama: number | null
+          created_at: string
+          device_id: string
+          distancia: number | null
+          gas: number | null
+          id: string
+          movimento: number | null
+          temperatura: number | null
+          timestamp: number
+          vibracao: number | null
+        }
+        Insert: {
+          chama?: number | null
+          created_at?: string
+          device_id: string
+          distancia?: number | null
+          gas?: number | null
+          id?: string
+          movimento?: number | null
+          temperatura?: number | null
+          timestamp: number
+          vibracao?: number | null
+        }
+        Update: {
+          chama?: number | null
+          created_at?: string
+          device_id?: string
+          distancia?: number | null
+          gas?: number | null
+          id?: string
+          movimento?: number | null
+          temperatura?: number | null
+          timestamp?: number
+          vibracao?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sensor_readings_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: false
+            referencedRelation: "devices"
+            referencedColumns: ["device_id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
