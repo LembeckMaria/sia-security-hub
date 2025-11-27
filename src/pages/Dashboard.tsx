@@ -82,6 +82,15 @@ const Dashboard = () => {
               <Button
                 variant="ghost"
                 size="sm"
+                onClick={() => navigate("/test-sensor")}
+                className="text-primary-foreground hover:bg-primary-foreground/10"
+              >
+                <Activity className="h-4 w-4 mr-2" />
+                Testar
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => navigate("/configuracoes")}
                 className="text-primary-foreground hover:bg-primary-foreground/10"
               >
